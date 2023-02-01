@@ -1,10 +1,10 @@
-## Geojson.io API
+## geojson.thelocationapi.com API
 
-You can interact with geojson.io programmatically via url parameters:
+You can interact with geojson.thelocationapi.com programmatically via url parameters:
 
 ## URL API
 
-You can do a few interesting things with just URLs and geojson.io. Here are the
+You can do a few interesting things with just URLs and geojson.thelocationapi.com. Here are the
 current URL formats.
 
 ### `map`
@@ -14,7 +14,7 @@ in the form `zoom/latitude/longitude`.
 
 #### Example:
 
-http://geojson.io/#map=2/20.0/0.0
+http://geojson.thelocationapi.com/#map=2/20.0/0.0
 
 ### `data=data:application/json,`
 
@@ -24,7 +24,7 @@ as per `encodeURIComponent(JSON.stringify(geojson_data))`.
 
 #### Example:
 
-http://geojson.io/#data=data:application/json,%7B%22type%22%3A%22LineString%22%2C%22coordinates%22%3A%5B%5B0%2C0%5D%2C%5B10%2C10%5D%5D%7D
+http://geojson.thelocationapi.com/#data=data:application/json,%7B%22type%22%3A%22LineString%22%2C%22coordinates%22%3A%5B%5B0%2C0%5D%2C%5B10%2C10%5D%5D%7D
 
 ### `data=data:text/x-url,`
 
@@ -39,7 +39,7 @@ The URL should be encoded as per `encodeURIComponent(url)`.
 
 #### Example:
 
-http://geojson.io/#data=data:text/x-url,http%3A%2F%2Fapi.tiles.mapbox.com%2Fv3%2Ftmcw.map-gdv4cswo%2Fmarkers.geojson
+http://geojson.thelocationapi.com/#data=data:text/x-url,http%3A%2F%2Fapi.tiles.mapbox.com%2Fv3%2Ftmcw.map-gdv4cswo%2Fmarkers.geojson
 
 ### `id=gist:`
 
@@ -49,7 +49,7 @@ contain a file with a `.geojson` extension that is valid GeoJSON.
 
 #### Example:
 
-http://geojson.io/#id=gist:tmcw/e9a29ad54dbaa83dee08&map=8/39.198/-76.981
+http://geojson.thelocationapi.com/#id=gist:tmcw/e9a29ad54dbaa83dee08&map=8/39.198/-76.981
 
 ### `id=github:`
 
@@ -62,4 +62,4 @@ The url is in the form:
 
 #### Example:
 
-http://geojson.io/#id=github:benbalter/dc-wifi-social/blob/master/bars.geojson&map=14/38.9140/-77.0302
+http://geojson.thelocationapi.com/#id=github:benbalter/dc-wifi-social/blob/master/bars.geojson&map=14/38.9140/-77.0302

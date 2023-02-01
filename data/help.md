@@ -1,8 +1,8 @@
 ## Help
 
-**geojson.io** is a quick, simple tool for creating, viewing, and sharing maps. geojson.io is named after [GeoJSON](http://geojson.org/), an open source spatial data format, and it supports GeoJSON in all ways - but also accepts KML, GPX, CSV, GTFS, TopoJSON, and other formats.
+**geojson.thelocationapi.com** is a quick, simple tool for creating, viewing, and sharing maps. geojson.thelocationapi.com is named after [GeoJSON](http://geojson.org/), an open source spatial data format, and it supports GeoJSON in all ways - but also accepts KML, GPX, CSV, GTFS, TopoJSON, and other formats.
 
-Want to request a feature or report a bug? [Open an issue on geojson.io's issue tracker.](https://github.com/mapbox/geojson.io/issues?state=open)
+Want to request a feature or report a bug? [Open an issue on geojson.thelocationapi.com's issue tracker.](https://github.com/mapbox/geojson.thelocationapi.com/issues?state=open)
 
 ### I've got data
 
@@ -23,8 +23,8 @@ Properties in GeoJSON are stored as 'key value pairs'. You can edit properties i
 
 ### I'm a coder
 
-[geojson.io accepts URL parameters](#geojson-io-api) that make it easy to go from a GeoJSON file on your computer to geojson.io.
+[geojson.thelocationapi.com accepts URL parameters](#geojson-io-api) that make it easy to go from a GeoJSON file on your computer to geojson.thelocationapi.com.
 
 ### Privacy & License Issues
 
-*   **The data you create and modify in geojson.io** doesn't acquire any additional license: if it's secret and copyrighted, it will remain that way - it doesn't have to be public or open source.
+*   **The data you create and modify in geojson.thelocationapi.com** doesn't acquire any additional license: if it's secret and copyrighted, it will remain that way - it doesn't have to be public or open source.

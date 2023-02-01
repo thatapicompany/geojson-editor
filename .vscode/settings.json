@@ -1,5 +1,10 @@
 {
   "search.exclude": {
     "**/dist": true,
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#401F4F",
+    "titleBar.activeBackground": "#5A2C6F",
+    "titleBar.activeForeground": "#FDFBFD"
   }
 }

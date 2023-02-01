@@ -61,8 +61,8 @@ function geojsonIO() {
 }
 
 Sentry.init({
-  dsn: 'https://c2d096c944dd4150ab7e44b0881b4a46@o5937.ingest.sentry.io/11480',
-  release: 'geojson.io@latest',
+  dsn: 'https://80979f57a98549a38bf5e90342175485@o439042.ingest.sentry.io/4504602275610624',
+  release: 'geojson.thelocationapi.com@latest',
   integrations: [new BrowserTracing()],
   tracesSampleRate: 1.0
 });
