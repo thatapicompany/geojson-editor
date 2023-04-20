@@ -10,9 +10,7 @@ const shpwrite = require('shp-write'),
 const flash = require('./flash'),
   zoomextent = require('../lib/zoomextent'),
   readFile = require('../lib/readfile'),
-  meta = require('../lib/meta.js'),
-  saver = require('../ui/saver.js'),
-  config = require('../config.js')(location.hostname);
+  meta = require('../lib/meta.js');
 
 /**
  * This module provides the file picking & status bar above the map interface.
@@ -21,8 +19,6 @@ const flash = require('./flash'),
  */
 module.exports = function fileBar(context) {
   const shpSupport = typeof ArrayBuffer !== 'undefined';
-  const mapboxAPI = false;
-  const githubAPI = !!config.GithubAPI;
 
   const exportFormats = [
     {
@@ -63,7 +59,6 @@ module.exports = function fileBar(context) {
       },
       {
         title: 'Save',
-        action: mapboxAPI || githubAPI ? saveAction : function () {},
         children: exportFormats
       },
       {
@@ -137,10 +132,17 @@ module.exports = function fileBar(context) {
             }
           },
           {
-            title: 'Load encoded polyline',
-            alt: 'Decode and show an encoded polyline. Precision 5 is supported.',
+            title: 'Load encoded polyline (precision 5)',
+            alt: 'Decode and show an encoded precision 5 polyline.',
             action: function () {
               meta.polyline(context);
+            }
+          },
+          {
+            title: 'Load encoded polyline (precision 6)',
+            alt: 'Decode and show an encoded precision 6 polyline.',
+            action: function () {
+              meta.polyline6(context);
             }
           },
           {
@@ -194,11 +196,6 @@ module.exports = function fileBar(context) {
         .attr('class', 'children')
         .call(submenu(d.children));
     });
-
-    function saveAction() {
-      if (d3.event) d3.event.preventDefault();
-      saver(context);
-    }
 
     function submenu(children) {
       return function (selection) {
