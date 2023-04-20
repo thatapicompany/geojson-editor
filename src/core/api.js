@@ -4,11 +4,11 @@ function api(context) {
   if (typeof console === 'undefined' || !console || !console.log) return;
 
   console.log(
-    '%c⚛ geojson.io console api ⚛',
+    '%c⚛ geojson.thelocationapi.com console api ⚛',
     'font-family:monospace;font-size:20px;color:darkblue;'
   );
   console.log(
-    '%cfrom here, you can customize geojson.io to your liking by mucking around with the internals',
+    '%cfrom here, you can customize geojson.thelocationapi.com to your liking by mucking around with the internals',
     'font-family:monospace;font-size:14px;color:darkblue;'
   );
   console.log("%chere's what's available ↓", 'color:blue;');

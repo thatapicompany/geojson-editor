@@ -19,7 +19,7 @@ module.exports = share;
 // function emailUrl(_) {
 //   return (
 //     'mailto:?subject=' +
-//     encodeURIComponent('My Map on geojson.io') +
+//     encodeURIComponent('My Map on geojson.thelocationapi.com') +
 //     "&body=Here's the link: " +
 //     encodeURIComponent(_)
 //   );
