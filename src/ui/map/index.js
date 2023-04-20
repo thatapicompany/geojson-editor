@@ -88,8 +88,7 @@ module.exports = function (context, readonly) {
   }
 
   function map() {
-    mapboxgl.accessToken =
-      'pk.eyJ1IjoiYWRlbmYiLCJhIjoiY2xnb2l0NDZkMHB6djNxbnQ0cjI4cjI4diJ9.EZtDEsERrX7yPAh66HnmrQ';
+    mapboxgl.accessToken = process.env.MAPBOX_ACCESS_TOKEN
 
     //
     const projection = context.storage.get('projection') || DEFAULT_PROJECTION;
