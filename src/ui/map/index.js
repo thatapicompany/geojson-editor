@@ -89,7 +89,7 @@ module.exports = function (context, readonly) {
 
   function map() {
     mapboxgl.accessToken =
-      'pk.eyJ1IjoiYWRlbmYiLCJhIjoiY2xnb2l0NDZkMHB6djNxbnQ0cjI4cjI4diJ9.EZtDEsERrX7yPAh66HnmrQ';
+      'pk.eyJ1IjoiYWRlbmYiLCJhIjoiY2p0d2RwbTc3MGFxZDN5bnk5YTR3ZXNiNyJ9.NFC44dDoiGpsjfA5b2LzGA';
 
     //
     const projection = context.storage.get('projection') || DEFAULT_PROJECTION;
