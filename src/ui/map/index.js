@@ -22,6 +22,8 @@ const {
 } = require('../../constants');
 const drawStyles = require('../draw/styles');
 
+const qs = require('qs-hash');
+
 let writable = false;
 let drawing = false;
 let editing = false;
@@ -132,6 +134,9 @@ module.exports = function (context, readonly) {
         styles: drawStyles
       });
 
+      const query = qs.stringQs(location.hash.split('#')[1] || '');
+      const hideEditor = query.hideeditor === 'true';
+
       const drawControl = new ExtendDrawBar({
         draw: context.Draw,
         buttons: [
@@ -188,7 +193,7 @@ module.exports = function (context, readonly) {
 
       context.map.addControl(new mapboxgl.NavigationControl());
 
-      context.map.addControl(drawControl, 'top-right');
+      if (!hideEditor) context.map.addControl(drawControl, 'top-right');
 
       const editControl = new EditControl();
       context.map.addControl(editControl, 'top-right');

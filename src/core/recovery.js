@@ -6,6 +6,8 @@ module.exports = function (context) {
 
   const query = qs.stringQs(location.hash.split('#')[1] || '');
 
+  console.log('query', query);
+
   if (location.hash !== '#new' && !query.id && !query.data) {
     const rec = context.storage.get('recover');
     if (rec && confirm('recover your map from the last time you edited?')) {

@@ -63,6 +63,10 @@ The url is in the form:
 
     login/repository/blob/branch/filepath
 
+### `hideeditor=true`
+
+Default to false. If true, hides the editor controls and side panel.
+
 #### Example:
 
 http://geojson.thelocationapi.com/#id=github:benbalter/dc-wifi-social/blob/master/bars.geojson&map=14/38.9140/-77.0302

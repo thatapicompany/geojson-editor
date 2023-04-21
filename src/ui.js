@@ -5,17 +5,22 @@ const buttons = require('./ui/mode_buttons'),
   layer_switch = require('./ui/layer_switch'),
   projection_switch = require('./ui/projection_switch');
 
+const qs = require('qs-hash');
+
 module.exports = ui;
 
 function ui(context) {
   function init(selection) {
+    const query = qs.stringQs(location.hash.split('#')[1] || '');
+
+    const hideEditor = query.hideeditor === 'true';
+
     const container = selection
       .append('div')
       .attr(
         'class',
         'ui-container grow flex-shrink-0 flex flex-col md:flex-row w-full relative overflow-x-hidden'
       );
-
     const map = container
       .append('div')
       .attr('id', 'map')
@@ -26,29 +31,31 @@ function ui(context) {
       .call(layer_switch(context))
       .call(projection_switch(context));
 
-    // sidebar handle
-    map
-      .append('div')
-      .attr(
-        'class',
-        'sidebar-handle absolute right-0 bottom-9 px-4 bg-white cursor-pointer hidden md:block z-10'
-      )
-      .attr('title', 'Toggle Sidebar')
-      .on('click', () => {
-        const collapsed = !d3.select('.map').classed('md:basis-full');
-        d3.select('.map').classed('md:basis-0', !collapsed);
-        d3.select('.map').classed('md:basis-full', collapsed);
+    if (!hideEditor) {
+      // sidebar handle
+      map
+        .append('div')
+        .attr(
+          'class',
+          'sidebar-handle absolute right-0 bottom-9 px-4 bg-white cursor-pointer hidden md:block z-10'
+        )
+        .attr('title', 'Toggle Sidebar')
+        .on('click', () => {
+          const collapsed = !d3.select('.map').classed('md:basis-full');
+          d3.select('.map').classed('md:basis-0', !collapsed);
+          d3.select('.map').classed('md:basis-full', collapsed);
 
-        d3.select('.sidebar-handle-icon')
-          .classed('fa-caret-left', collapsed)
-          .classed('fa-caret-right', !collapsed);
+          d3.select('.sidebar-handle-icon')
+            .classed('fa-caret-left', collapsed)
+            .classed('fa-caret-right', !collapsed);
 
-        setTimeout(() => {
-          context.map.resize();
-        }, 300);
-      })
-      .append('i')
-      .attr('class', 'sidebar-handle-icon fa-solid fa-caret-right');
+          setTimeout(() => {
+            context.map.resize();
+          }, 300);
+        })
+        .append('i')
+        .attr('class', 'sidebar-handle-icon fa-solid fa-caret-right');
+    }
 
     context.container = container;
 
@@ -58,36 +65,41 @@ function ui(context) {
   function render(selection) {
     const container = init(selection);
 
-    const right = container
-      .append('div')
-      .attr(
-        'class',
-        'right flex flex-col overflow-x-hidden bottom-0 top-0 right-0 box-border bg-white relative grow-0 shrink-0 w-full md:w-2/5 md:max-w-md h-2/5 md:h-auto'
-      );
+    const query = qs.stringQs(location.hash.split('#')[1] || '');
 
-    const top = right
-      .append('div')
-      .attr('class', 'top border-b border-solid border-gray-200');
+    const hideEditor = query.hideeditor === 'true';
 
-    const pane = right.append('div').attr('class', 'pane group');
+    if (!hideEditor) {
+      const right = container
+        .append('div')
+        .attr(
+          'class',
+          'right flex flex-col overflow-x-hidden bottom-0 top-0 right-0 box-border bg-white relative grow-0 shrink-0 w-full md:w-2/5 md:max-w-md h-2/5 md:h-auto'
+        );
 
-    // user ui, disabled for now
-    // top
-    //     .append('div')
-    //     .attr('class', 'user fr pad1 deemphasize')
-    //     .call(userUi(context));
+      const top = right
+        .append('div')
+        .attr('class', 'top border-b border-solid border-gray-200');
 
-    top
-      .append('div')
-      .attr('class', 'buttons flex')
-      .call(buttons(context, pane));
+      const pane = right.append('div').attr('class', 'pane group');
 
-    container
-      .append('div')
-      .attr('class', 'file-bar hidden md:block')
-      .call(file_bar(context));
+      // user ui, disabled for now
+      // top
+      //     .append('div')
+      //     .attr('class', 'user fr pad1 deemphasize')
+      //     .call(userUi(context));
 
-    dnd(context);
+      top
+        .append('div')
+        .attr('class', 'buttons flex')
+        .call(buttons(context, pane));
+
+      container
+        .append('div')
+        .attr('class', 'file-bar hidden md:block')
+        .call(file_bar(context));
+      dnd(context);
+    }
 
     // initialize the map after the ui has been created to avoid flex container size issues
     context.map();
