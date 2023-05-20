@@ -1,11 +1,11 @@
 <html>
     <body>
         <button onclick="myFunction('John')">Click me</button>
-        <iframe id="iframeId" src="https://geojson.thelocationapi.com/#hideeditor=true&editable=false" width="100%" height="100%"></iframe>
+        <iframe id="iframeId" src="./index.html#disablerecover=true&hideeditor=true&editable=false" width="100%" height="100%"></iframe>
         <script>
             function myFunction(name) {
                 //get an example polygon of a geojson object
-                let geojsonExample = {
+                let geojsonExample ={
                     type:"Feature",
                     properties: {
                         name: "Coors Field",
@@ -17,6 +17,21 @@
                         coordinates: [-104.99404, 39.75621]
                     }
                 };
+
+                //example geojson geometry with type polygon
+                const polygon = {
+                    type: "Polygon",
+                    coordinates: [
+                        [
+                            [-104.05, 39.76],
+                            [-104.05, 39.79],
+                            [-104.03, 39.79],
+                            [-104.03, 39.76],
+                            [-104.05, 39.76]
+                        ]
+                    ]
+                };
+                geojsonExample.geometry = polygon;
                 var o = document.getElementsByTagName('iframe')[0];
 o.contentWindow.postMessage(JSON.stringify(geojsonExample),'*');
             }

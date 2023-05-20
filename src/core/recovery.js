@@ -8,7 +8,7 @@ module.exports = function (context) {
 
   console.log('query', query);
 
-  if (location.hash !== '#new' && !query.id && !query.data) {
+  if (location.hash !== '#new' && !query.id && !query.data && !query.disablerecover) {
     const rec = context.storage.get('recover');
     if (rec && confirm('recover your map from the last time you edited?')) {
       context.data.set({
@@ -18,6 +18,8 @@ module.exports = function (context) {
     } else {
       context.storage.remove('recover');
     }
+
+    
   }
 
   function onunload() {

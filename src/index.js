@@ -40,7 +40,7 @@ const ui = require('./ui'),
   api = require('./core/api'),
   store = require('store');
 
-const gjIO = geojsonIO(),
+let gjIO = geojsonIO(),
   gjUI = ui(gjIO).write;
 
 d3.select('.geojsonio').call(gjUI);
@@ -64,23 +64,19 @@ function geojsonIO() {
 }
 window.addEventListener('message', receiver, false);
 function receiver(e) {
-  alert(e.data);
   const data = JSON.parse(e.data);
-  gjIO.data.set(data);
-  gjIO.map.draw();
-}
-
-window.setGeoJSON = function (data) {
-  // eslint-disable-line no-unused-vars
-
-  try {
-    alert('setGeoJSON ', JSON.stringify(data));
-  } catch (e) {
-    alert('setGeoJSON ', e);
+  //alert(data.geometry.coordinates[0]);
+  window.api.data.set({map:{
+    "type": "FeatureCollection",
+    "features": [data]
+  }} )
+  let center = data.geometry.coordinates;
+  if(data.geometry.type == "Polygon"){
+    center = data.geometry.coordinates[0][0];
   }
-  gjIO.data.set(data);
-  gjIO.map.draw();
-};
+  window.api.map.setCenter({lng: center[0], lat: center[1]}) 
+  //window.api.map.flyTo({ center: center, zoom: 10 });
+}
 
 Sentry.init({
   dsn: 'https://c2d096c944dd4150ab7e44b0881b4a46@o5937.ingest.sentry.io/11480',
