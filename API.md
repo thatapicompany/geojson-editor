@@ -69,7 +69,15 @@ Default to false. If true, hides the editor controls and side panel.
 
 #### Example:
 
-http://geojson.thelocationapi.com/#id=github:benbalter/dc-wifi-social/blob/master/bars.geojson&map=14/38.9140/-77.0302
+http://geojson.thelocationapi.com/#hideeditor=true&map=14/38.9140/-77.0302
+
+### `editable=false`
+
+Default to true. If true, hides the search and zoom controls
+
+#### Example:
+
+http://geojson.thelocationapi.com/#editable=false&map=14/38.9140/-77.0302
 
 ## Console API
 
