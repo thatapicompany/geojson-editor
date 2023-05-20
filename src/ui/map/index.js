@@ -44,6 +44,8 @@ const dummyGeojson = {
 module.exports = function (context, readonly) {
   writable = !readonly;
 
+  const query = qs.stringQs(location.hash.split('#')[1] || '');
+  writable = query.editable === 'false' ? false : writable;
   // keyboard shortcuts
   const keybinding = d3
     .keybinding('map')
