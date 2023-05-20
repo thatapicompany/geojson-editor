@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <button onclick="myFunction('John')">Click me</button>
+        <iframe id="iframeId" src="https://geojson.thelocationapi.com/#hideeditor=true&editable=false" width="100%" height="100%"></iframe>
+        <script>
+            function myFunction(name) {
+                //get an example polygon of a geojson object
+                let geojsonExample = {
+                    type:"Feature",
+                    properties: {
+                        name: "Coors Field",
+                        amenity: "Baseball Stadium",
+                        popupContent: "This is where the Rockies play!"
+                    },
+                    geometry: {
+                        type: "Point",
+                        coordinates: [-104.99404, 39.75621]
+                    }
+                };
+                var o = document.getElementsByTagName('iframe')[0];
+o.contentWindow.postMessage(JSON.stringify(geojsonExample),'*');
+            }
+        </script>
+</html>

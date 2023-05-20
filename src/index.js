@@ -62,6 +62,13 @@ function geojsonIO() {
   context.user = user(context);
   return context;
 }
+window.addEventListener('message', receiver, false);
+function receiver(e) {
+  alert(e.data);
+  const data = JSON.parse(e.data);
+  gjIO.data.set(data);
+  gjIO.map.draw();
+}
 
 window.setGeoJSON = function (data) {
   // eslint-disable-line no-unused-vars
