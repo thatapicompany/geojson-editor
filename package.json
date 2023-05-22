@@ -24,6 +24,7 @@
     "@turf/bbox": "^6.5.0",
     "@turf/circle": "^6.5.0",
     "@turf/length": "^6.5.0",
+    "@turf/turf": "^6.5.0",
     "bowser": "^2.11.0",
     "clone": "0.1.16",
     "codemirror": "5.65.9",

@@ -1,3 +1,6 @@
+//require turf centroid
+const turf = require('@turf/turf');
+
 // import d3 plus 3custom plugins
 require('./d3-global.js');
 require('./lib/d3-compat');
@@ -71,10 +74,12 @@ function receiver(e) {
     "type": "FeatureCollection",
     "features": [data]
   }} )
-  let center = data.geometry.coordinates;
-  if(data.geometry.type == "Polygon"){
-    center = data.geometry.coordinates[0][0];
-  }
+  
+
+  //get the centroid of the polygon
+  let center = turf.centroid(data).geometry.coordinates;
+  console.log('center',center);
+
   window.api.map.setCenter({lng: center[0], lat: center[1]}) 
   //window.api.map.flyTo({ center: center, zoom: 10 });
 }

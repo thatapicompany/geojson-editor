@@ -44,8 +44,8 @@ module.exports = function (context) {
         return d.label;
       });
 
-    const activeProjection =
-      context.storage.get('projection') || DEFAULT_PROJECTION;
+    const activeProjection = context.storage.get('projection') || DEFAULT_PROJECTION;
+    
     projectionButtons
       .filter(({ value }) => {
         return value === activeProjection;
