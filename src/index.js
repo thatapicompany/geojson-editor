@@ -33,7 +33,7 @@ const Sentry = require('@sentry/browser');
 const { BrowserTracing } = require('@sentry/tracing');
 
 const ui = require('./ui'),
-  map = require('./ui/map'),
+  map = require('./ui/map/google/index'),
   data = require('./core/data'),
   loader = require('./core/loader'),
   router = require('./core/router'),
@@ -70,17 +70,18 @@ function receiver(e) {
   const data = JSON.parse(e.data);
   console.log('Revieved data from parent window', data);
   //alert(data.geometry.coordinates[0]);
-  window.api.data.set({map:{
-    "type": "FeatureCollection",
-    "features": [data]
-  }} )
-  
+  window.api.data.set({
+    map: {
+      type: 'FeatureCollection',
+      features: [data]
+    }
+  });
 
   //get the centroid of the polygon
   let center = turf.centroid(data).geometry.coordinates;
-  console.log('center',center);
+  console.log('center', center);
 
-  window.api.map.setCenter({lng: center[0], lat: center[1]}) 
+  window.api.map.setCenter({ lng: center[0], lat: center[1] });
   //window.api.map.flyTo({ center: center, zoom: 10 });
 }
 
