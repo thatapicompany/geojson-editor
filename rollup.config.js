@@ -16,7 +16,8 @@ export default {
     file: 'dist/bundle.js',
     format: 'iife',
     sourcemap: true,
-    strict: false
+    strict: false,
+    preventAssignment: true
   },
   plugins: [
     commonjs({
