@@ -6,6 +6,7 @@
   "type": "module",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.0",
+    "@googlemaps/js-api-loader": "^1.16.1",
     "@mapbox/geojson-extent": "^1.0.1",
     "@mapbox/geojson-normalize": "0.0.1",
     "@mapbox/geojson-rewind": "0.5.2",
@@ -59,6 +60,7 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-replace": "^5.0.1",
     "@rollup/plugin-terser": "^0.2.0",
+    "@types/google.maps": "^3.53.4",
     "@vercel/git-hooks": "^1.0.0",
     "babelify": "^10.0.0",
     "concurrently": "^7.6.0",
