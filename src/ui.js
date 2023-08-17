@@ -11,11 +11,9 @@ module.exports = ui;
 
 function ui(context) {
   function init(selection) {
-
-
     // get the query string parameters
-    let params = new URLSearchParams(window.location.search)
 
+    const params = new URLSearchParams(window.location.search);
     const hideEditor = params.get('hideeditor') === 'true';
 
     const container = selection
@@ -68,7 +66,7 @@ function ui(context) {
   function render(selection) {
     const container = init(selection);
 
-    let params = new URLSearchParams(window.location.search)
+    let params = new URLSearchParams(window.location.search);
 
     const hideEditor = params.get('hideeditor') === 'true';
 
