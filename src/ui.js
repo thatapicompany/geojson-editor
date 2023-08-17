@@ -66,7 +66,7 @@ function ui(context) {
   function render(selection) {
     const container = init(selection);
 
-    let params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);
 
     const hideEditor = params.get('hideeditor') === 'true';
 
