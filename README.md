@@ -44,3 +44,17 @@ To deploy to github pages, use `npm run deploy`.  This will run the deploy scrip
 ## License
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fmapbox%2Fgeojson.thelocationapi.com.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fmapbox%2Fgeojson.thelocationapi.com?ref=badge_large)
+
+
+### Query string parameters
+
+|param||
+|---|---|
+|hideeditor| hide the editor controls | 
+|editable| allow the geojson shapes to be edited |
+
+#### Examples
+
+- https://geojson.thelocationapi.com/?editable=false&hideeditor=true#map=2/26.32/28.5
+- https://geojson.thelocationapi.com/?hideeditor=true#data=data:application/json,%7B%22type%22%3A%22LineString%22%2C%22coordinates%22%3A%5B%5B0%2C0%5D%2C%5B10%2C10%5D%5D%7D
+- http://127.0.0.1:8080/#data=data:application/json,%7B%22type%22%3A%22LineString%22%2C%22coordinates%22%3A%5B%5B0%2C0%5D%2C%5B10%2C10%5D%5D%7D&hideeditor=true

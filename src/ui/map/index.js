@@ -136,8 +136,9 @@ module.exports = function (context, readonly) {
         styles: drawStyles
       });
 
-      const query = qs.stringQs(location.hash.split('#')[1] || '');
-      const hideEditor = query.hideeditor === 'true';
+      let params = new URLSearchParams(window.location.search)
+
+      const hideEditor = params.get('hideeditor') === 'true';
 
       const drawControl = new ExtendDrawBar({
         draw: context.Draw,

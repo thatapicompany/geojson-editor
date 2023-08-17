@@ -11,9 +11,12 @@ module.exports = ui;
 
 function ui(context) {
   function init(selection) {
-    const query = qs.stringQs(location.hash.split('#')[1] || '');
 
-    const hideEditor = query.hideeditor === 'true';
+
+    // get the query string parameters
+    let params = new URLSearchParams(window.location.search)
+
+    const hideEditor = params.get('hideeditor') === 'true';
 
     const container = selection
       .append('div')
@@ -65,9 +68,9 @@ function ui(context) {
   function render(selection) {
     const container = init(selection);
 
-    const query = qs.stringQs(location.hash.split('#')[1] || '');
+    let params = new URLSearchParams(window.location.search)
 
-    const hideEditor = query.hideeditor === 'true';
+    const hideEditor = params.get('hideeditor') === 'true';
 
     if (!hideEditor) {
       const right = container
