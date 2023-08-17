@@ -136,7 +136,7 @@ module.exports = function (context, readonly) {
         styles: drawStyles
       });
 
-      let params = new URLSearchParams(window.location.search)
+      const params = new URLSearchParams(window.location.search);
 
       const hideEditor = params.get('hideeditor') === 'true';
 

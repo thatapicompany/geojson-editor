@@ -5,8 +5,6 @@ const buttons = require('./ui/mode_buttons'),
   layer_switch = require('./ui/layer_switch'),
   projection_switch = require('./ui/projection_switch');
 
-const qs = require('qs-hash');
-
 module.exports = ui;
 
 function ui(context) {
