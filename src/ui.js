@@ -13,6 +13,7 @@ function ui(context) {
 
     const params = new URLSearchParams(window.location.search);
     const hideEditor = params.get('hideeditor') === 'true';
+    const hidesearch = params.get('hidesearch') === 'true';
 
     const container = selection
       .append('div')
@@ -29,6 +30,15 @@ function ui(context) {
       )
       .call(layer_switch(context))
       .call(projection_switch(context));
+
+    if (hidesearch) {
+      document.addEventListener('DOMContentLoaded', () => {
+        const searchBar = document.getElementsByClassName(
+          'mapboxgl-ctrl-geocoder mapboxgl-ctrl'
+        );
+        searchBar[0].setAttribute('class', 'hide');
+      });
+    }
 
     if (!hideEditor) {
       // sidebar handle
