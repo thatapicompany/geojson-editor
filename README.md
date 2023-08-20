@@ -39,8 +39,23 @@ If you get an error resolving dependencies related to `rollup` on newer versions
 
 `npm run build` will create minified bundles in `/dist`. You can try out the production build with `npm run serve` which will run live-server.
 
-To deploy to github pages, use `npm run deploy`.  This will run the deploy script in `deploy.sh`, which creates a new orphan branch from the current branch, runs a production build, and force pushes to the `gh-pages` branch.
+To deploy to github pages, use `npm run deploy`. This will run the deploy script in `deploy.sh`, which creates a new orphan branch from the current branch, runs a production build, and force pushes to the `gh-pages` branch.
 
 ## License
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fmapbox%2Fgeojson.thelocationapi.com.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fmapbox%2Fgeojson.thelocationapi.com?ref=badge_large)
+
+### Query string parameters
+
+| param      |                                       |
+| ---------- | ------------------------------------- |
+| hideeditor | hide the editor controls              |
+| hidesearch | hide the maps search controls         |
+| editable   | allow the geojson shapes to be edited |
+
+#### Examples
+
+- https://geojson.thelocationapi.com/?hidesearch=true&hideeditor=true&-0.093/51.5088/#data=data:application/json,%7B%22type%22%3A%22FeatureCollection%22%2C%22features%22%3A%5B%7B%22type%22%3A%22Feature%22%2C%22properties%22%3A%7B%22name%22%3A%22MY%20IP%20ADDRESS%22%7D%2C%22geometry%22%3A%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B-0.093%2C51.5088%5D%7D%7D%5D%7D
+- https://geojson.thelocationapi.com/?editable=false&hideeditor=true#map=2/26.32/28.5
+- https://geojson.thelocationapi.com/?hideeditor=true#data=data:application/json,%7B%22type%22%3A%22LineString%22%2C%22coordinates%22%3A%5B%5B0%2C0%5D%2C%5B10%2C10%5D%5D%7D
+- http://127.0.0.1:8080/#data=data:application/json,%7B%22type%22%3A%22LineString%22%2C%22coordinates%22%3A%5B%5B0%2C0%5D%2C%5B10%2C10%5D%5D%7D&hideeditor=true

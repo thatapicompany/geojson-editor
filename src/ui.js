@@ -5,15 +5,15 @@ const buttons = require('./ui/mode_buttons'),
   layer_switch = require('./ui/layer_switch'),
   projection_switch = require('./ui/projection_switch');
 
-const qs = require('qs-hash');
-
 module.exports = ui;
 
 function ui(context) {
   function init(selection) {
-    const query = qs.stringQs(location.hash.split('#')[1] || '');
+    // get the query string parameters
 
-    const hideEditor = query.hideeditor === 'true';
+    const params = new URLSearchParams(window.location.search);
+    const hideEditor = params.get('hideeditor') === 'true';
+    const hidesearch = params.get('hidesearch') === 'true';
 
     const container = selection
       .append('div')
@@ -30,6 +30,15 @@ function ui(context) {
       )
       .call(layer_switch(context))
       .call(projection_switch(context));
+
+    if (hidesearch) {
+      document.addEventListener('DOMContentLoaded', () => {
+        const searchBar = document.getElementsByClassName(
+          'mapboxgl-ctrl-geocoder mapboxgl-ctrl'
+        );
+        searchBar[0].setAttribute('class', 'hide');
+      });
+    }
 
     if (!hideEditor) {
       // sidebar handle
@@ -65,9 +74,9 @@ function ui(context) {
   function render(selection) {
     const container = init(selection);
 
-    const query = qs.stringQs(location.hash.split('#')[1] || '');
+    const params = new URLSearchParams(window.location.search);
 
-    const hideEditor = query.hideeditor === 'true';
+    const hideEditor = params.get('hideeditor') === 'true';
 
     if (!hideEditor) {
       const right = container

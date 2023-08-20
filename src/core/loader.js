@@ -43,7 +43,8 @@ module.exports = function (context) {
       context.data.set({
         map: JSON.parse(data)
       });
-      history.replaceState('', document.title, window.location.pathname);
+      //console.log("inlineJSON", JSON.parse(data));
+     // history.replaceState('', document.title, window.location.pathname);
 
       zoomextent(context);
     } catch (e) {
@@ -59,6 +60,7 @@ module.exports = function (context) {
       .get();
 
     function onload(d) {
+      //console.log("loadUrl.onload")
       context.data.set({ map: d });
       history.replaceState('', document.title, window.location.pathname);
       zoomextent(context);

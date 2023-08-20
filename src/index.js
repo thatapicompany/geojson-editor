@@ -65,10 +65,12 @@ function geojsonIO() {
   context.user = user(context);
   return context;
 }
+
+//receive data from parent window via postmessage
 window.addEventListener('message', receiver, false);
 function receiver(e) {
   const data = JSON.parse(e.data);
-  console.log('Revieved data from parent window', data);
+  console.log('Received data from parent window', data);
   //alert(data.geometry.coordinates[0]);
   window.api.data.set({map:{
     "type": "FeatureCollection",
