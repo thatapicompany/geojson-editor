@@ -124,3 +124,20 @@ Exposes the [mapbox-gl-draw](https://github.com/mapbox/mapbox-gl-draw) instance 
 ## `window.api.on(event, fn)`
 
 Exposes d3 events, including `change`.
+
+## Query Parameters
+
+| Parameter | Description | Example URL |
+| --- | --- | --- |
+| hideeditor | Hides the editor controls and side panel | [link](https://geojson.thelocationapi.com/?hideeditor=true#map=4.37/39.72/-11.61) |
+| hidesearch | Hides the search and zoom controls | [link](https://geojson.thelocationapi.com/?hidesearch=true#map=4.37/39.72/-11.61) |
+| editable | Makes the map read-only | [link](https://geojson.thelocationapi.com/?editable=false#map=4.37/39.72/-11.61) |
+
+## Hash Parameters
+
+| Parameter | Description | Example URL |
+| --- | --- | --- |
+| map | Sets the map view | [link](https://geojson.thelocationapi.com/#map=4.37/39.72/-11.61) |
+| data | Sets the map data | [link](https://geojson.thelocationapi.com/#data=data:application/json,%7B%22type%22%3A%22LineString%22%2C%22coordinates%22%3A%5B%5B0%2C0%5D%2C%5B10%2C10%5D%5D%7D) |
+| id | Sets the map data from a URL | [link](https://geojson.thelocationapi.com/#id=gist:tmcw/e9a29ad54dbaa83dee08&map=8/39.198/-76.981) |
+
