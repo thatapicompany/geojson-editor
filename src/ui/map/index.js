@@ -139,59 +139,68 @@ module.exports = function (context, readonly) {
       const params = new URLSearchParams(window.location.search);
 
       const hideEditor = params.get('hideeditor') === 'true';
+      const hidePoint = params.get('hidepoint') === 'true';
+      const hideLine = params.get('hideline') === 'true';
+
+      const buttons = [];
+
+      if (!hidePoint) {
+        buttons.push({
+          on: 'click',
+          action: () => {
+            drawing = true;
+            context.Draw.changeMode('draw_point');
+          },
+          classes: ['mapbox-gl-draw_ctrl-draw-btn', 'mapbox-gl-draw_point'],
+          title: 'Draw Point (m)'
+        });
+      }
+
+      if (!hideLine) {
+        buttons.push({
+          on: 'click',
+          action: () => {
+            drawing = true;
+            context.Draw.changeMode('draw_line_string');
+          },
+          classes: ['mapbox-gl-draw_ctrl-draw-btn', 'mapbox-gl-draw_line'],
+          title: 'Draw LineString (l)'
+        });
+      }
+
+      buttons.push({
+        on: 'click',
+        action: () => {
+          drawing = true;
+          context.Draw.changeMode('draw_polygon');
+        },
+        classes: ['mapbox-gl-draw_ctrl-draw-btn', 'mapbox-gl-draw_polygon'],
+        title: 'Draw Polygon (p)'
+      });
+
+      buttons.push({
+        on: 'click',
+        action: () => {
+          drawing = true;
+          context.Draw.changeMode('draw_rectangle');
+        },
+        classes: ['mapbox-gl-draw_ctrl-draw-btn', 'mapbox-gl-draw_rectangle'],
+        title: 'Draw Rectangular Polygon (r)'
+      });
+
+      buttons.push({
+        on: 'click',
+        action: () => {
+          drawing = true;
+          context.Draw.changeMode('draw_circle');
+        },
+        classes: ['mapbox-gl-draw_ctrl-draw-btn', 'mapbox-gl-draw_circle'],
+        title: 'Draw Circular Polygon (c)'
+      });
 
       const drawControl = new ExtendDrawBar({
         draw: context.Draw,
-        buttons: [
-          {
-            on: 'click',
-            action: () => {
-              drawing = true;
-              context.Draw.changeMode('draw_point');
-            },
-            classes: ['mapbox-gl-draw_ctrl-draw-btn', 'mapbox-gl-draw_point'],
-            title: 'Draw Point (m)'
-          },
-          {
-            on: 'click',
-            action: () => {
-              drawing = true;
-              context.Draw.changeMode('draw_line_string');
-            },
-            classes: ['mapbox-gl-draw_ctrl-draw-btn', 'mapbox-gl-draw_line'],
-            title: 'Draw LineString (l)'
-          },
-          {
-            on: 'click',
-            action: () => {
-              drawing = true;
-              context.Draw.changeMode('draw_polygon');
-            },
-            classes: ['mapbox-gl-draw_ctrl-draw-btn', 'mapbox-gl-draw_polygon'],
-            title: 'Draw Polygon (p)'
-          },
-          {
-            on: 'click',
-            action: () => {
-              drawing = true;
-              context.Draw.changeMode('draw_rectangle');
-            },
-            classes: [
-              'mapbox-gl-draw_ctrl-draw-btn',
-              'mapbox-gl-draw_rectangle'
-            ],
-            title: 'Draw Rectangular Polygon (r)'
-          },
-          {
-            on: 'click',
-            action: () => {
-              drawing = true;
-              context.Draw.changeMode('draw_circle');
-            },
-            classes: ['mapbox-gl-draw_ctrl-draw-btn', 'mapbox-gl-draw_circle'],
-            title: 'Draw Circular Polygon (c)'
-          }
-        ]
+        buttons: buttons
       });
 
       context.map.addControl(new mapboxgl.NavigationControl());

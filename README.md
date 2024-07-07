@@ -51,6 +51,9 @@ To deploy to github pages, use `npm run deploy`. This will run the deploy script
 | ---------- | ------------------------------------- |
 | hideeditor | hide the editor controls              |
 | hidesearch | hide the maps search controls         |
+| hidetexteditor | hide the text panel       |
+| hidepoint | hide the point button         |
+| hideline | hide the line control        |
 | editable   | allow the geojson shapes to be edited |
 
 #### Examples
@@ -59,3 +62,5 @@ To deploy to github pages, use `npm run deploy`. This will run the deploy script
 - https://geojson.thelocationapi.com/?editable=false&hideeditor=true#map=2/26.32/28.5
 - https://geojson.thelocationapi.com/?hideeditor=true#data=data:application/json,%7B%22type%22%3A%22LineString%22%2C%22coordinates%22%3A%5B%5B0%2C0%5D%2C%5B10%2C10%5D%5D%7D
 - http://127.0.0.1:8080/#data=data:application/json,%7B%22type%22%3A%22LineString%22%2C%22coordinates%22%3A%5B%5B0%2C0%5D%2C%5B10%2C10%5D%5D%7D&hideeditor=true
+
+- https://geojson.thelocationapi.com/?hidetexteditor=true&hidesearch=true&hidepoint=true&hideline=true#map=2/0/20

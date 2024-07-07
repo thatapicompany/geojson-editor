@@ -12,8 +12,8 @@ function ui(context) {
     // get the query string parameters
 
     const params = new URLSearchParams(window.location.search);
-    const hideEditor = params.get('hideeditor') === 'true';
     const hidesearch = params.get('hidesearch') === 'true';
+    const hidetexteditor = params.get('hidetexteditor') === 'true';
 
     const container = selection
       .append('div')
@@ -40,7 +40,7 @@ function ui(context) {
       });
     }
 
-    if (!hideEditor) {
+    if (!hidetexteditor) {
       // sidebar handle
       map
         .append('div')
@@ -76,9 +76,9 @@ function ui(context) {
 
     const params = new URLSearchParams(window.location.search);
 
-    const hideEditor = params.get('hideeditor') === 'true';
+    const hidetexteditor = params.get('hidetexteditor') === 'true';
 
-    if (!hideEditor) {
+    if (!hidetexteditor) {
       const right = container
         .append('div')
         .attr(
