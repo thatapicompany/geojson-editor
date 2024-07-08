@@ -54,6 +54,7 @@ To deploy to github pages, use `npm run deploy`. This will run the deploy script
 | hidetexteditor | hide the text panel       |
 | hidepoint | hide the point button         |
 | hideline | hide the line control        |
+| hidestyletab | hide the style and properties tab on the feature popup on click        |
 | editable   | allow the geojson shapes to be edited |
 
 #### Examples

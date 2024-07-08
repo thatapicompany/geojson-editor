@@ -324,6 +324,9 @@ function bindPopup(e, context, writable) {
     info += '</table>';
   }
 
+  const params = new URLSearchParams(window.location.search);
+
+  const hideStyleTab = params.get('hidestyletab') === 'true';
   // don't show the add simplestyle properties button if the feature already contains simplestyle properties
   let showAddStyleButton = true;
 
@@ -364,11 +367,8 @@ function bindPopup(e, context, writable) {
       showAddStyleButton = false;
     }
   }
-
-  const tabs =
-    '<div class="pad1 tabs-ui clearfix col12">' +
-    '<div class="tab col12">' +
-    '<input class="hide" type="radio" id="properties" name="tab-group" checked="true">' +
+  const styleTab = '<div class="tab col12">' +
+    '<input class="hide" type="radio" id="properties" name="tab-group" >' +
     '<label class="keyline-top keyline-right tab-toggle pad0 pin-bottomleft z10 center col6" for="properties">Properties</label>' +
     '<div class="space-bottom1 col12 content">' +
     '<table class="space-bottom0 marker-properties">' +
@@ -381,9 +381,12 @@ function bindPopup(e, context, writable) {
       ? '<div class="add-simplestyle-properties-button fl text-right col8">Add simplestyle properties</div>'
       : '') +
     '</div>' +
-    '</div>' +
+    '</div>' ;
+  const tabs =
+    '<div class="pad1 tabs-ui clearfix col12">' + (hideStyleTab ? '' : styleTab) + 
+    
     '<div class="space-bottom2 tab col12">' +
-    '<input class="hide" type="radio" id="info" name="tab-group">' +
+    '<input class="hide" type="radio" id="info" name="tab-group" checked="true">' +
     '<label class="keyline-top tab-toggle pad0 pin-bottomright z10 center col6" for="info">Info</label>' +
     '<div class="space-bottom1 col12 content">' +
     '<div class="marker-info">' +
@@ -394,13 +397,13 @@ function bindPopup(e, context, writable) {
     '</div>';
 
   const content =
-    '<form action="javascript:void(0);">' +
+    '<form action="javascript:void(1);">' +
     tabs +
     (writable
       ? '<div class="clearfix col12 pad1 keyline-top">' +
         '<div class="pill col6">' +
-        '<button class="save col6 major" type="submit">Save</button>' +
-        '<button class="minor col6 cancel">Cancel</button>' +
+        (hideStyleTab ? '' : '<button class="save col6 major" type="submit">Save</button>' +
+        '<button class="minor col6 cancel">Cancel</button>' ) +
         '</div>' +
         '<button class="col6 text-right pad0 delete-invert"><span class="fa-solid fa-trash"></span> Delete feature</button></div>'
       : '') +
